@@ -44,7 +44,20 @@ public class DateSphireAiBackendApplication implements CommandLineRunner {
 				"INTP"
 		);
 		profileRepository.save(profile);
-		System.out.println("Profile saved successfully...");
+		System.out.println("Profile 1 saved successfully...");
+		Profile profile2 = new Profile(
+				"2",
+				"Martha",
+				"Castilla",
+				29,
+				"White",
+				Gender.FEMALE,
+				"UPS Loader",
+				"martha.jpg",
+				"INTP"
+		);
+		profileRepository.save(profile2);
+		System.out.println("Profile 2 saved successfully...");
 		profileRepository.findAll().forEach(System.out::println);
 
 		Conversation  conversation = new Conversation(
