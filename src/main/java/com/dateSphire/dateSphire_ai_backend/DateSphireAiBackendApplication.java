@@ -29,6 +29,9 @@ public class DateSphireAiBackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
+		profileRepository.deleteAll();
+		conversationRepository.deleteAll();
+
 		Profile profile = new Profile(
 				"1",
 				"Mohamed",
