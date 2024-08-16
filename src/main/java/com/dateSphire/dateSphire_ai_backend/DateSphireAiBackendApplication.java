@@ -1,27 +1,20 @@
 package com.dateSphire.dateSphire_ai_backend;
 
-import com.dateSphire.dateSphire_ai_backend.conversations.ChatMessage;
-import com.dateSphire.dateSphire_ai_backend.conversations.Conversation;
-import com.dateSphire.dateSphire_ai_backend.conversations.ConversationRepository;
-import com.dateSphire.dateSphire_ai_backend.profiles.Gender;
-import com.dateSphire.dateSphire_ai_backend.profiles.Profile;
-import com.dateSphire.dateSphire_ai_backend.profiles.ProfileRepository;
+import com.dateSphire.dateSphire_ai_backend.profiles.ProfileCreationService;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 @SpringBootApplication
 public class DateSphireAiBackendApplication implements CommandLineRunner {
 
 	@Autowired
-	private ProfileRepository profileRepository;
+	private ProfileCreationService profileCreationService;
 
 	@Autowired
-	private ConversationRepository conversationRepository;
+	private OpenAiChatModel chatModel;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DateSphireAiBackendApplication.class, args);
@@ -29,47 +22,6 @@ public class DateSphireAiBackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		profileRepository.deleteAll();
-		conversationRepository.deleteAll();
-
-		Profile profile = new Profile(
-				"1",
-				"Mohamed",
-				"Shika",
-				31,
-				"White",
-				Gender.MALE,
-				"Full Stack Engineer",
-				"mo.jpg",
-				"INTP"
-		);
-		profileRepository.save(profile);
-		System.out.println("Profile 1 saved successfully...");
-		Profile profile2 = new Profile(
-				"2",
-				"Martha",
-				"Castilla",
-				29,
-				"White",
-				Gender.FEMALE,
-				"UPS Loader",
-				"martha.jpg",
-				"INTP"
-		);
-		profileRepository.save(profile2);
-		System.out.println("Profile 2 saved successfully...");
-		profileRepository.findAll().forEach(System.out::println);
-
-		Conversation  conversation = new Conversation(
-				"1",
-				profile.id(),  // will be AI created Profiles
-				List.of(new ChatMessage(
-						"Hello",
-						profile.id(),
-						LocalDateTime.now()))
-		);
-		conversationRepository.save(conversation);
-		System.out.println("Conversation saved successfully...");
-		conversationRepository.findAll().forEach(System.out::println);
+		profileCreationService.saveProfilesToDB();
 	}
 }
