@@ -3,11 +3,7 @@ package com.dateSphire.dateSphire_ai_backend.conversations;
 import com.dateSphire.dateSphire_ai_backend.profiles.Profile;
 import com.dateSphire.dateSphire_ai_backend.profiles.ProfileRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
@@ -25,6 +21,7 @@ public class ConversationController {
         this.profileRepository = profileRepository;
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/conversations")
     public Conversation createConversation(@RequestBody CreateConversationRequest request) {
         Profile profile = profileRepository.findById(request.profileId)
@@ -37,6 +34,7 @@ public class ConversationController {
         return conversationRepository.save(conversation);
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/conversations/{conversationId}")
     public Conversation createConversation(@PathVariable String conversationId, @RequestBody ChatMessage chatMessage) {
         Conversation conversation = conversationRepository.findById(conversationId)
@@ -53,6 +51,7 @@ public class ConversationController {
         return conversationRepository.save(conversation);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/conversations/{conversationId}")
     public Conversation getConversationById(@PathVariable String conversationId) {
         return conversationRepository.findById(conversationId)
