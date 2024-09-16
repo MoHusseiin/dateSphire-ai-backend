@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class MatchController {
 
     public record CreateMatchRequest(String profileId){}
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/match")
     public Match createMatch(@RequestBody CreateMatchRequest matchRequest) {
         Profile profile = profileRepository.findById(matchRequest.profileId)
@@ -48,6 +50,7 @@ public class MatchController {
         return matchRepository.save(match);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/matches")
     public List<Match> getMatches() {
         return matchRepository.findAll();

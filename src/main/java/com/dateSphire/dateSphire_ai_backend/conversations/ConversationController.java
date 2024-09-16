@@ -15,10 +15,12 @@ public class ConversationController {
 
     private final ConversationRepository conversationRepository;
     private final ProfileRepository profileRepository;
+    private final ConversationService conversationService;
 
-    public ConversationController(ConversationRepository conversationRepository, ProfileRepository profileRepository) {
+    public ConversationController(ConversationRepository conversationRepository, ProfileRepository profileRepository, ConversationService conversationService) {
         this.conversationRepository = conversationRepository;
         this.profileRepository = profileRepository;
+        this.conversationService = conversationService;
     }
 
     @CrossOrigin(origins = "*")
@@ -39,7 +41,7 @@ public class ConversationController {
     public Conversation createConversation(@PathVariable String conversationId, @RequestBody ChatMessage chatMessage) {
         Conversation conversation = conversationRepository.findById(conversationId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find Conversation with id = " +conversationId));
-        profileRepository.findById(chatMessage.authorId())
+        Profile profile = profileRepository.findById(conversation.profileId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find Profile with id = " + chatMessage.authorId()));
 
         ChatMessage message = new ChatMessage(
@@ -48,6 +50,9 @@ public class ConversationController {
                 LocalDateTime.now()
         );
         conversation.messages().add(message);
+        Profile me =  profileRepository.findById(chatMessage.authorId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find Profile with id = user"));
+        conversationService.generateProfileResponse(conversation, profile, me);
         return conversationRepository.save(conversation);
     }
 
