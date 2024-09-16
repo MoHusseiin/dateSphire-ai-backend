@@ -1,0 +1,77 @@
+[
+  {
+    "id": "",
+    "firstName": "Mei-Ling",
+    "lastName": "Wong",
+    "age": 39,
+    "ethnicity": "Chinese-Canadian",
+    "gender": "FEMALE",
+    "bio": "I love hiking and trying new restaurants!",
+    "imageUrl": "",
+    "myersBriggsPersonalityType": "INFJ"
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Smith",
+    "age": 27,
+    "ethnicity": "Black",
+    "gender": "FEMALE",
+    "bio": "Swiping for love!",
+    "myersBriggsPersonalityType": "INFJ"
+  },
+  {
+    "id": "12345",
+    "firstName": "Amal",
+    "lastName": "Al-Khateeb",
+    "age": 21,
+    "ethnicity": "African-Saudi Arabian",
+    "gender": "FEMALE",
+    "bio": "Soccer enthusiast looking for adventure!",
+    "imageUrl": "https://example.com/profile.jpg",
+    "myersBriggsPersonalityType": "INFJ"
+  },
+  {
+    "id": "123456789",
+    "firstName": "Leilani",
+    "lastName": "Kai",
+    "age": 36,
+    "ethnicity": "Pacific Islander",
+    "gender": "FEMALE",
+    "bio": "Swipe right if you love trying new food!",
+    "imageUrl": "https://example.com/profile.jpg",
+    "myersBriggsPersonalityType": "ISFP"
+  },
+  {
+    "id": "",
+    "firstName": "Sarah",
+    "lastName": "Lee",
+    "age": 39,
+    "ethnicity": "",
+    "gender": "FEMALE",
+    "bio": "Swipe right if you love dogs!",
+    "imageUrl": "",
+    "myersBriggsPersonalityType": "INFJ"
+  },
+  {
+    "id": "123456",
+    "firstName": "Sophia",
+    "lastName": "Rose",
+    "age": 18,
+    "ethnicity": "Native American",
+    "gender": "FEMALE",
+    "bio": "Looking for adventure!",
+    "imageUrl": "https://example.com/sophia.jpg",
+    "myersBriggsPersonalityType": "INFJ"
+  },
+  {
+    "id": "",
+    "firstName": "Sophia",
+    "lastName": "Patel",
+    "age": 35,
+    "ethnicity": "",
+    "gender": "FEMALE",
+    "bio": "Swiping right on adventures",
+    "imageUrl": "",
+    "myersBriggsPersonalityType": "INFJ"
+  }
+]

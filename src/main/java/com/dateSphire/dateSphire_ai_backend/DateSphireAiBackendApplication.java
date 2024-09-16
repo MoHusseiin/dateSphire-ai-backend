@@ -29,7 +29,7 @@ public class DateSphireAiBackendApplication implements CommandLineRunner {
 	public void run(String... args) {
 		clearAllData();
 //		profileCreationService.saveProfilesToDB();
-		profileCreationService.createProfiles();
+		profileCreationService.createProfiles(3);
 	}
 
 	private void clearAllData() {
